@@ -4,7 +4,10 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build:test": "browserify example-spec.js > test.bundle.js",
+    "test": "npm run build:test && electron test-main.js",
+    "clean": "rimraf test.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,9 @@
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
   "devDependencies": {
-    "electron-prebuilt": "^0.35.0"
+    "browserify": "^12.0.1",
+    "electron-prebuilt": "^0.35.0",
+    "mocha": "^2.3.4",
+    "rimraf": "^2.5.0"
   }
 }
