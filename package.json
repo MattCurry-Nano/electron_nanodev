@@ -4,9 +4,10 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js",
-    "build:test": "browserify example-spec.js > test.bundle.js",
-    "test": "npm run build:test && electron test-main.js",
+    "start": "npm run build && electron main.js",
+    "build": "browserify -t [ babelify --presets [ react ] ] main/app.js > app.bundle.js",
+    "build:test": "browserify *-spec.js > test.bundle.js",
+    "test": "npm run build:test && electron test.js",
     "clean": "rimraf test.bundle.js"
   },
   "repository": {
@@ -30,5 +31,11 @@
     "electron-prebuilt": "^0.35.0",
     "mocha": "^2.3.4",
     "rimraf": "^2.5.0"
+  },
+  "dependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
   }
 }
