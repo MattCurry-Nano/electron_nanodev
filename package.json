@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run build && electron main.js",
     "build": "browserify -t [ babelify --presets [ react ] ] main/app.js > app.bundle.js",
-    "build:test": "browserify *-spec.js > test.bundle.js",
+    "build:test:require": "node load-tests.js > require-tests.js",
+    "build:test": "npm run build:test:require && browserify -t [ babelify --presets [ react ] ] require-tests.js > test.bundle.js",
     "test": "npm run build:test && electron test.js",
     "clean": "rimraf test.bundle.js"
   },
@@ -29,6 +30,7 @@
   "devDependencies": {
     "browserify": "^12.0.1",
     "electron-prebuilt": "^0.35.0",
+    "glob": "^6.0.3",
     "mocha": "^2.3.4",
     "rimraf": "^2.5.0"
   },

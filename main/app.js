@@ -1,8 +1,9 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var LiveView = require('./liveview.js');
 
 ReactDOM.render(
-  <h1>Hello, world from React!</h1>,
-  document.getElementById('main')
+  <LiveView />,
+  document.getElementById('app')
 );

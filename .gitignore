@@ -1,3 +1,4 @@
 node_modules
+require-tests.js
 *.bundle.js
 *.log
