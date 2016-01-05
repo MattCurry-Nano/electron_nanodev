@@ -5,7 +5,10 @@ var LiveView = React.createClass({
     return {imageData:[]};
   },
   componentDidMount: function () {
-    console.log(this.refs.canvas);
+    var ctx = this.refs.canvas.getContext("2d");
+
+    ctx.fillStyle = "green";
+    ctx.fillRect(10, 10, 100, 100);
   },
   render: function() {
     return (
