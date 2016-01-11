@@ -7,3 +7,9 @@ ReactDOM.render(
   <LiveView />,
   document.getElementById('app')
 );
+
+console.log('trying ffi...');
+var avt = require('app/AVTCamera');
+
+avt.startup();
+avt.shutdown();

@@ -5,11 +5,12 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run build && electron main.js",
-    "build": "browserify -t [ babelify --presets [ react ] ] main/app.js > app.bundle.js",
+    "build": "browserify -u electron -u ref -u ref-struct -u ffi -u app/AVTCamera -t [ babelify --presets [ react ] ] main/index.js > app.bundle.js",
     "build:test:require": "node load-tests.js > require-tests.js",
-    "build:test": "npm run build:test:require && browserify -t [ babelify --presets [ react ] ] require-tests.js > test.bundle.js",
+    "build:test": "npm run build:test:require && browserify -u electron -u app/AVTCamera -t [ babelify --presets [ react ] ] require-tests.js > test.bundle.js",
     "test": "npm run build:test && electron test.js",
-    "clean": "rimraf test.bundle.js"
+    "clean": "rimraf test.bundle.js",
+    "postinstall": "electron-rebuild"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "browserify": "^12.0.1",
     "electron-prebuilt": "^0.35.0",
+    "electron-rebuild": "^1.0.2",
     "glob": "^6.0.3",
     "mocha": "^2.3.4",
     "rimraf": "^2.5.0"
@@ -37,7 +39,10 @@
   "dependencies": {
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
+    "ffi": "^2.0.0",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react-dom": "^0.14.5",
+    "ref": "^1.3.2",
+    "ref-struct": "^1.0.2"
   }
 }
