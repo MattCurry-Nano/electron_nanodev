@@ -13,3 +13,4 @@ var avt = require('app/AVTCamera');
 
 avt.startup();
 avt.shutdown();
+console.log(avt.get_camera_list());
